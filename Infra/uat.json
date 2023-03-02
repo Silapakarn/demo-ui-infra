@@ -1,0 +1,45 @@
+{
+    "family": "bmp_ui-task-definition",
+    "containerDefinitions": [
+        {
+            "name": "bmp_ui",
+            "image": "096090030316.dkr.ecr.ap-southeast-1.amazonaws.com/bmp_ui",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "bmp_ui-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/bmp_ui-task-definition",
+                    "awslogs-region": "ap-southeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "taskRoleArn": "arn:aws:iam::096090030316:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::096090030316:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    }
+}

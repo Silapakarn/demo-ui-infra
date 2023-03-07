@@ -37,7 +37,7 @@ pipeline{
                         script {
                             def image = "${AWS_ECR_REPO_URL}/${AWS_ECS_SERVICE}:${IMAGE_TAG}"
                             sh("cat ./Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json | jq '.containerDefinitions[].image = \"$image\"' > ./Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json")
-                            sh("/usr/local/bin/aws ecs register-task-definition --region ${AWS_ECR_REGION} --cli-input-json file://./Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json")
+                            sh("/usr/local/bin/aws ecs register-task-definition --region ${AWS_ECR_REGION} --cli-input-json file://Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json")
                             def taskRevision = sh(script: "/usr/local/bin/aws ecs describe-task-definition --task-definition ${AWS_ECS_TASK_DEFINITION} | jq -r '.taskDefinition.revision'", returnStdout: true)
                             sh("/usr/local/bin/aws ecs update-service --force-new-deployment --cluster ${AWS_ECS_CLUSTER} --service ${AWS_ECS_SERVICE} --task-definition ${AWS_ECS_TASK_DEFINITION}:${taskRevision}")
                             

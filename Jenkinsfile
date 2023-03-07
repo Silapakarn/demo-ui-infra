@@ -30,7 +30,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
                     withAWS(region: "${AWS_ECR_REGION}", credentials: 'silapakarn') {
                         script {
-                            def image = "${AWS_ECR_URL}:${IMAGE_TAG}"
+                            def image = "dmakeroam/test:latest"
                             sh 'pwd'
                             sh 'ls'
                             sh("cat ${AWS_ECS_TASK_DEFINITION_INPUT_PATH} | jq '.containerDefinitions[].image = \"$image\"' > ${AWS_ECS_TASK_DEFINITION_PATH}")

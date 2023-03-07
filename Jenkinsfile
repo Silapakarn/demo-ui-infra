@@ -16,7 +16,7 @@ pipeline{
     
      environment {
         AWS_ECR_REGION = 'ap-southeast-1'
-        AWS_ECS_CLUSTER = 'my-first-cluster'
+        AWS_ECS_CLUSTER = 'demo-cluster'
         AWS_ECS_TASK_DEFINITION = 'bmp_ui-task-definition'
         AWS_ECS_TASK_DEFINITION_INPUT_PATH = './Infra/uat.json'
         AWS_ECS_TASK_DEFINITION_PATH = './task_def.json'

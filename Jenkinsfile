@@ -20,7 +20,7 @@ pipeline{
         AWS_ECS_TASK_DEFINITION = 'bmp_ui-task-definition'
         AWS_ECS_TASK_DEFINITION_INPUT_PATH = './Infra/uat.json'
         AWS_ECS_TASK_DEFINITION_PATH = './task_def.json'
-        AWS_ECS_SERVICE = 'demo-counter-app-service'
+        AWS_ECS_SERVICE = 'bmi-ui-svc-ext'
     }
     
    

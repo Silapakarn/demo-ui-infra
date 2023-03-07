@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "bmp_ui",
-            "image": "dmakeroam/test",
+            "image": "096090030316.dkr.ecr.ap-southeast-1.amazonaws.com/bmp_ui:v5.0",
             "cpu": 512,
             "memory": 1024,
             "portMappings": [

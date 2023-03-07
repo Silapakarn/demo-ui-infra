@@ -4,7 +4,7 @@ pipeline{
     agent any
         
     parameters {
-      string(defaultValue: "v5.0", description: 'IMAGE TAG', name: 'IMAGE_TAG')  
+      string(defaultValue: "v1.0", description: 'IMAGE TAG', name: 'IMAGE_TAG')  
       string(defaultValue: "demo-cluster", description: 'AWS ECS Cluster', name: 'AWS_ECS_CLUSTER')
       string(defaultValue: "ap-southeast-1", description: 'AWS ECS Region', name: 'AWS_ECR_REGION')  
       string(defaultValue: "bmp_ui", description: 'AWS ECS Service', name: 'AWS_ECS_SERVICE')

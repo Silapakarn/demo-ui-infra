@@ -3,8 +3,9 @@
     "containerDefinitions": [
         {
             "name": "bmp_ui",
-            "image": "096090030316.dkr.ecr.ap-southeast-1.amazonaws.com/bmp_ui",
-            "cpu": 0,
+            "image": "dmakeroam/test",
+            "cpu": 512,
+            "memory": 1024,
             "portMappings": [
                 {
                     "name": "bmp_ui-80-tcp",
@@ -27,6 +28,16 @@
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "ecs"
                 }
+            },
+            "healthCheck": {
+                "command": [
+                    "CMD-SHELL",
+                    "curl -so /dev/null http://localhost/ || exit 1"
+                ],
+                "interval": 5,
+                "timeout": 3,
+                "retries": 3,
+                "startPeriod": 3
             }
         }
     ],
@@ -36,8 +47,8 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "512",
-    "memory": "1024",
+    "cpu": "1024",
+    "memory": "2048",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"

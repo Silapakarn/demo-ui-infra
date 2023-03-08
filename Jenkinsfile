@@ -20,9 +20,9 @@ pipeline{
         timestamps()
     }
     
-    tools {
-        maven 'maven 3.9.0'
-    }
+//     tools {
+//         maven 'maven 3.9.0'
+//     }
     
      environment {
         AWS_ECS_TASK_DEFINITION_PATH = './task_def.json'

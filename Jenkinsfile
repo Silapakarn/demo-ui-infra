@@ -32,7 +32,7 @@ pipeline{
     stages {            
         stage('Deploy in ECS') {
             agent {
-                docker { image 'public.ecr.aws/kubeopsskills/circleci:1.0.5-docker-aws' }
+                docker { image 'cloudnceng/ci-docker-aws:0.0.1' }
             } 
             steps {
                     withAWS(region: "${AWS_ECR_REGION}", credentials: 'silapakarn') {

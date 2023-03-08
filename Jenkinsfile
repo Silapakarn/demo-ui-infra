@@ -10,7 +10,7 @@ pipeline{
       string(defaultValue: "bmp_ui", description: 'AWS ECS Service', name: 'AWS_ECS_SERVICE')
       string(defaultValue: "uat", description: 'AWS ECS Service Environment', name: 'AWS_ECS_SERVICE_ENVIRONMENT')
       string(defaultValue: "bmp_ui-task-definition", description: 'AWS ECS Task Definition', name: 'AWS_ECS_TASK_DEFINITION')  
-      string(defaultValue: "", description: 'AWS ECS Repository URL', name: 'AWS_ECR_REPO_URL')  
+      string(defaultValue: "096090030316.dkr.ecr.ap-southeast-1.amazonaws.com", description: 'AWS ECS Repository URL', name: 'AWS_ECR_REPO_URL')  
     }
 
     options {

@@ -34,6 +34,10 @@ pipeline{
             steps {
                     withAWS(region: "${AWS_ECR_REGION}", credentials: 'silapakarn') {
                         script {
+                            sh """
+                                ls
+                                pwd
+                            """
                             def image = "${AWS_ECR_REPO_URL}/${AWS_ECS_SERVICE}:${IMAGE_TAG}"
                             sh("cat ./Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json | jq '.containerDefinitions[].image = \"$image\"' > ${AWS_ECS_TASK_DEFINITION_PATH}")
                             sh("/usr/local/bin/aws ecs register-task-definition --region ${AWS_ECR_REGION} --cli-input-json file://${AWS_ECS_TASK_DEFINITION_PATH}")

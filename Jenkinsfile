@@ -37,12 +37,9 @@ pipeline{
             steps {
                     withAWS(region: "${AWS_ECR_REGION}", credentials: 'silapakarn') {
                         script {
-                            sh """
-                                ls
-                                pwd
-                            """
+                
                             def image = "${AWS_ECR_REPO_URL}/${AWS_ECS_SERVICE}:${IMAGE_TAG}"
-//                             sh("cat ./Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json | jq '.containerDefinitions[].image = \"$image\"' > ${AWS_ECS_TASK_DEFINITION_PATH}")
+                            sh("cat ./Infra/${AWS_ECS_SERVICE_ENVIRONMENT}.json | jq '.containerDefinitions[].image = \"$image\"' > ${AWS_ECS_TASK_DEFINITION_PATH}")
                             sh("aws ecs register-task-definition --region ${AWS_ECR_REGION} --cli-input-json file://${AWS_ECS_TASK_DEFINITION_PATH}")
                             def taskRevision = sh(script: "aws ecs describe-task-definition --task-definition ${AWS_ECS_TASK_DEFINITION} | jq -r '.taskDefinition.revision'", returnStdout: true)
                             sh("aws ecs update-service --force-new-deployment --cluster ${AWS_ECS_CLUSTER} --service ${AWS_ECS_SERVICE} --task-definition ${AWS_ECS_TASK_DEFINITION}:${taskRevision}")

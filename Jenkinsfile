@@ -30,7 +30,7 @@ pipeline{
     
    
     stages {            
-        stage('Deploy in ECS') {
+        stage('Deploy Into AWS ECS') {
             agent {
                 docker { image 'cloudnceng/ci-aws:2.11.0' }
             } 
